@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.umclog">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".TermActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CreateTermActivity"
+            android:label="@string/create_term_activity_label"
+            android:parentActivityName=".TermActivity"
+            android:theme="@style/CreateTermTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TermActivity" />
+        </activity>
+        <activity
+            android:name=".AttendanceActivity"
+            android:label="@string/attendance_activity_label"
+            android:parentActivityName=".TermActivity"
+            android:theme="@style/AttendanceTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TermActivity" />
+        </activity>
+        <activity
+            android:name=".MarkActivity"
+            android:label="@string/mark_activity_label"
+            android:parentActivityName=".TermActivity"
+            android:theme="@style/AttendanceTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TermActivity" />
+        </activity>
+
+        <provider
+            android:name=".data.TermProvider"
+            android:authorities="@string/content_authority_term"
+            android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".NewAssignmentActivity"
+            android:label="@string/new_assignment_label"
+            android:parentActivityName=".MarkActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MarkActivity" />
+        </activity>
+        <activity
+            android:name=".GiveMarkActivity"
+            android:label="@string/give_mark_label"
+            android:parentActivityName=".MarkActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MarkActivity" />
+        </activity>
+    </application>
+
+</manifest>

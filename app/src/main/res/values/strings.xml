@@ -1,0 +1,149 @@
+<resources>
+    <!--labels for activities-->
+    <string name="app_name">UMC Log</string>
+    <string name="create_term_activity_label">Create new term</string>
+    <string name="attendance_activity_label">Attendance</string>
+    <string name="mark_activity_label">Marks</string>
+    <string name="new_assignment_label">Create new assignment</string>
+    <string name="edit_assignment_label">Edit assignment</string>
+    <string name="give_mark_label">New mark</string>
+
+    <!--Used to set up CreateTermActivity-->
+    <string name="term_begins">This term begins on </string>
+    <string name="term_ends">and ends on </string>
+    <string name="what_you_are_teaching">You are teaching</string>
+    <string name="to_level">to level</string>
+    <string name="add_students_button">Add students</string>
+    <string name="add_period_button">Add period</string>
+    <string name="change_date_button">Set date</string>
+    <string name="add_students_dialog_message">Add student names, one on every line</string>
+    <string name="discard_students">Discard</string>
+    <string name="confirm_students">Ready</string>
+    <string name="no_such_period_warning">There\'s no such period</string>
+    <string name="no_students_warning">Add students to period </string>
+    <!--Saving new term-->
+    <!--Used for toast message when new term was saved-->
+    <string name="saving_term_success_message">Term saved</string>
+    <!--Used for toast message when saving new term is unsuccessful-->
+    <string name="saving_term_failed_message">Saving term failed</string>
+    <!--Used for toast message when user does not set dates at all-->
+    <string name="reminder_to_set_dates">Set the start and end dates, will you?</string>
+    <!--Used for toast message when user sets the end date before the start date-->
+    <string name="reminder_to_set_end_after_start">The end must be after the start</string>
+    <!--used for toast message when user sets the dates for a term over or under four weeks-->
+    <string name="warning_wrong_term_duration">Term must be 4 weeks long!</string>
+    <!--used for toast message when user forgets to add names to period-->
+    <string name="warning_add_students">Add students to this period, will you?</string>
+    <!--used for toast message when user forgets to add names to period and clicks Create Term-->
+    <string name="warning_add_students_number">Don\'t forget to add students to period </string>
+
+    <!--Confirm Term Dialog-->
+    <string name="period_label">Period</string>
+    <string name="level_label">Level</string>
+    <string name="confirm_dialog_label">Is everything correct?</string>
+    <string name="confirm_dialog_positive_button">Save term</string>
+    <string name="confirm_dialog_negative_button">Go back</string>
+
+    <!--Names of different periods-->
+    <string name="effective_communication_grammar">Effective communication &amp; Grammar</string>
+    <string name="reading_writing">Reading &amp; Writing</string>
+    <string name="speaking_skills">Speaking skills &amp; Conversation</string>
+    <string name="writing_club">Writing club</string>
+    <string name="speaking_club">Speaking club</string>
+
+    <!--Names of attendance mark types-->
+    <string name="attendance_present">present</string>
+    <string name="attendance_absent">absent</string>
+    <string name="attendance_absent_we">absent with excuse</string>
+    <string name="attendance_late">late</string>
+    <string name="attendance_late_we">late with excuse</string>
+
+    <!--Names of attendance mark types, abbreviations-->
+    <string name="attendance_present_abbr">P</string>
+    <string name="attendance_absent_abbr">A</string>
+    <string name="attendance_absent_we_abbr">AE</string>
+    <string name="attendance_late_abbr">L</string>
+    <string name="attendance_late_we_abbr">LE</string>
+    <string name="attendance_empty_label"> </string>
+
+    <!--Attendance activity-->
+    <string name="attendance_legend">Legend</string>
+    <string name="switch_to_marks_button">Switch to marks</string>
+
+    <!--Marks activity-->
+    <!--Button in the action bar that returns to attendance activity-->
+    <string name="switch_to_attendance_button">Switch to attendance</string>
+    <!--Button in the action bar that adds a new task and mark for it-->
+    <string name="add_mark_button">Add new assignment</string>
+
+    <!--New Assignment Activity-->
+    <string name="assignment_title_label">Title</string>
+    <string name="assignment_level_label">Level</string>
+    <string name="assignment_description">Description</string>
+    <string name="assignment_maximum_label">Maximum mark</string>
+    <string name="assignment_type_label">Assignment type</string>
+    <string name="assignment_title_hint">What is this mark for?</string>
+    <string name="assignment_description_hint">Any comments here&#8230;</string>
+    <string name="assignment_maximum_hint">e.g. 40</string>
+    <string name="assignment_date_label">Date</string>
+    <string name="assignment_save_button">Save new assignment</string>
+    <string name="assignment_delete_button">Delete this assignment</string>
+    <string name="assignment_delete_dialog_title">Delete this assignment and all marks or it?</string>
+    <!--Save new assignment verification warnings-->
+    <string name="empty_title_warning">We need a title!</string>
+    <string name="empty_date_warning">We probably need a date</string>
+    <string name="empty_maximum_warning">We definitely need a maximum value!</string>
+    <string name="assignment_saved_warning">Assignment saved</string>
+    <string name="assignment_deleted_warning">Assignment deleted</string>
+    <string name="assignment_not_deleted_warning">Deletion failed</string>
+
+    <!--New Mark Activity-->
+    <string name="for_text">for</string>
+    <string name="gets_textView">gets</string>
+    <string name="out_of_hint">out of </string>
+    <string name="mark_not_saved_warning">Mark was not saved!</string>
+    <string name="empty_value_warning">Need a mark!</string>
+    <string name="above_max_warning">It is more than </string>
+    <string name="set_title_if_mark_exists">Edit mark</string>
+    <string name="delete_this_mark_dialog_title">Delete this mark?</string>
+
+    <!--All types of assignments-->
+    <string name="assignment_type_quiz">Quiz</string>
+    <string name="assignment_type_assignment">Assignment</string>
+    <string name="assignment_type_final_exam">Final Exam</string>
+    <string name="assignment_type_homework">Homework</string>
+    <string name="assignment_type_midterm">Midterm</string>
+    <string name="assignment_type_participation">Participation</string>
+    <string name="assignment_type_speaking_project">Speaking project</string>
+    <string name="assignment_type_test">Test</string>
+    <string name="assignment_type_total">Total</string>
+    <string name="assignment_type_writing_project">Writing project</string>
+
+    <!--All types of assignments, abbreviations-->
+    <string name="assignment_type_quiz_abbr">Qz</string>
+    <string name="assignment_type_assignment_abbr">Amt</string>
+    <string name="assignment_type_final_exam_abbr">Fin</string>
+    <string name="assignment_type_homework_abbr">HW</string>
+    <string name="assignment_type_midterm_abbr">Mid</string>
+    <string name="assignment_type_participation_abbr">P</string>
+    <string name="assignment_type_speaking_project_abbr">SP</string>
+    <string name="assignment_type_test_abbr">Test</string>
+    <string name="assignment_type_total_abbr">Ttl</string>
+    <string name="assignment_type_writing_project_abbr">WP</string>
+
+    <!--Adding and editing students-->
+    <string name="edit_student_dialog_label">Edit student name</string>
+    <string name="empty_name_warning">Student needs a name!</string>
+    <string name="student_saved_warning">Student saved</string>
+    <string name="student_not_saved_warning">Student was not saved!</string>
+    <string name="add_student_menu_label">Add new student</string>
+    <string name="add_student_hint">What is the new student\'s name?</string>
+
+    <!--Utility strings-->
+    <string name="ok_label">OK</string>
+
+    <!--Content authority, used for registering Term Content Provider in manifest-->
+    <string name="content_authority_term" translatable="false">com.example.android.umclog</string>
+
+
+</resources>

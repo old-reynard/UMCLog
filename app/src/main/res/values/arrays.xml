@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="all_periods">
+        <item>@string/effective_communication_grammar</item>
+        <item>@string/reading_writing</item>
+        <item>@string/speaking_skills</item>
+        <item>@string/writing_club</item>
+        <item>@string/speaking_club</item>
+    </string-array>
+
+    <string-array name="choose_level">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="attendance_buttons_labels">
+        <item>@string/attendance_present_abbr</item>
+        <item>@string/attendance_absent_abbr</item>
+        <item>@string/attendance_absent_we_abbr</item>
+        <item>@string/attendance_late_abbr</item>
+        <item>@string/attendance_late_we_abbr</item>
+        <item>@string/attendance_empty_label</item>
+    </string-array>
+
+    <string-array name="assignment_types">
+        <item>@string/assignment_type_assignment</item>
+        <item>@string/assignment_type_final_exam</item>
+        <item>@string/assignment_type_homework</item>
+        <item>@string/assignment_type_midterm</item>
+        <item>@string/assignment_type_participation</item>
+        <item>@string/assignment_type_quiz</item>
+        <item>@string/assignment_type_speaking_project</item>
+        <item>@string/assignment_type_test</item>
+        <item>@string/assignment_type_total</item>
+        <item>@string/assignment_type_writing_project</item>
+    </string-array>
+
+    <string-array name="assignment_types_abbr">
+        <item>@string/assignment_type_assignment_abbr</item>
+        <item>@string/assignment_type_final_exam_abbr</item>
+        <item>@string/assignment_type_homework_abbr</item>
+        <item>@string/assignment_type_midterm_abbr</item>
+        <item>@string/assignment_type_participation_abbr</item>
+        <item>@string/assignment_type_quiz_abbr</item>
+        <item>@string/assignment_type_speaking_project_abbr</item>
+        <item>@string/assignment_type_test_abbr</item>
+        <item>@string/assignment_type_total_abbr</item>
+        <item>@string/assignment_type_writing_project_abbr</item>
+    </string-array>
+</resources>
