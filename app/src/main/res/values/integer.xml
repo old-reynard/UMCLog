@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--used for exported attendance table -->
+    <integer name="export_table_vertical_offset">7</integer>
+    <integer name="export_table_horizontal_offset">2</integer>
+</resources>

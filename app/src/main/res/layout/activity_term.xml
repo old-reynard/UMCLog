@@ -9,13 +9,13 @@
     <TextView
         android:id="@+id/current_term_label_text_view"
         style="@style/CreateTermTextViews"
-        android:layout_width="272dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@+id/what_to_show_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +27,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="68dp"
-        app:layout_constraintBottom_toTopOf="@+id/choose_term_spinner"
+        app:layout_constraintBottom_toTopOf="@+id/what_to_show_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,27 +46,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_plus_one_black_48dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/what_to_show_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_new_term_actionbutton"
+        app:srcCompat="@drawable/ic_spellcheck_black_48dp" />
+
     <Spinner
         android:id="@+id/choose_term_spinner"
-        android:layout_width="222dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/add_new_term_actionbutton"
-        app:layout_constraintEnd_toStartOf="@+id/add_new_term_actionbutton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/add_new_term_actionbutton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/what_to_show_button"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        style="@style/CreateTermButtons"
-        android:text="@string/attendance_activity_label"
-        app:layout_constraintBottom_toBottomOf="@+id/current_term_label_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/current_term_label_text_view" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

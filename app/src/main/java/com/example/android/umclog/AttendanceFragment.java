@@ -155,7 +155,7 @@ public class AttendanceFragment extends Fragment {
         //      String days = new SimpleDateFormat("EE").format(start);
 
         /* store all the dates in the term in a list */
-        mDates = new ArrayList<>();
+        mDates      = new ArrayList<>();
         /* for the for loop that will select all the learning dates in the term */
         Date startTermDate = new Date(start);
         Date endTermDate = new Date(end);

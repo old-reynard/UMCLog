@@ -142,6 +142,15 @@
     <!--Utility strings-->
     <string name="ok_label">OK</string>
 
+    <!--Excel attendance report-->
+    <string name="table_name">Class attendance</string>
+    <string name="column_student_name">Student name</string>
+    <string name="term_activity_menu_label">Send attendance to Admin</string>
+    <string name="college_label">UPPER MADISON COLLEGE</string>
+
+    <!--Term Activity-->
+    <string name="choose_term_dialog_title">Let\'s choose a term</string>
+
     <!--Content authority, used for registering Term Content Provider in manifest-->
     <string name="content_authority_term" translatable="false">com.example.android.umclog</string>
 

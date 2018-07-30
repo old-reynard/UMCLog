@@ -1,25 +1,24 @@
 package com.example.android.umclog;
 
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.os.ParcelUuid;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.umclog.data.TermContract.PeriodEntry;
 import com.example.android.umclog.data.TermContract.TermEntry;
@@ -34,7 +33,7 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
     private Spinner mTermSpinner;
     private TextView termLabelTextView;
     RecyclerView choosePeriodView;
-    Button whatToShowButton;
+    FloatingActionButton whatToShowButton;
 
     /* Used to set labels and buttons for the current term */
     String[] termLabels;
@@ -49,7 +48,9 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
     LinearLayoutManager mLayoutManager;
 
     /* for the ChoosePeriodAdapter */
-    private List<Period> mPeriods;
+    List<Period> mPeriods;
+    /* for the term label view */
+    List<String> mTerms;
 
     /* Loader IDs */
     private static final int TERM_LOADER = 99;
@@ -62,7 +63,7 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     protected void onStart() {
-        showAttendance = whatToShowButton.getText().equals(getString(R.string.attendance_activity_label));
+        setImageOfWhatToShow(showAttendance);
         super.onStart();
     }
 
@@ -82,29 +83,32 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
         mTermSpinner = (Spinner)findViewById(R.id.choose_term_spinner);
-        termLabelTextView = (TextView)findViewById(R.id.current_term_label_text_view);
+        termLabelTextView = findViewById(R.id.current_term_label_text_view);
         whatToShowButton = findViewById(R.id.what_to_show_button);
         whatToShowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (showAttendance) {
-                    whatToShowButton.setText(R.string.mark_activity_label);
-                } else {
-                    whatToShowButton.setText(R.string.attendance_activity_label);
-                }
                 showAttendance = !showAttendance;
+                setImageOfWhatToShow(showAttendance);
             }
         });
 
-        setTermSpinnerVisibility();
+//        setTermSpinnerVisibility();
 
         getLoaderManager().initLoader(TERM_LOADER, null, this);
         getLoaderManager().initLoader(PERIOD_LOADER, null, this);
+
+        termLabelTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setupTermsListView(mTerms);
+            }
+        });
     }
 
 
     public void setupSpinner(List<String> termsList) {
-        setTermSpinnerVisibility();
+//        setTermSpinnerVisibility();
         ArrayAdapter<String> termSpinnerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, termsList);
         termSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -127,6 +131,7 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
         mTermSpinner.setSelection(termsList.size() - 1);
+//        mTermSpinner.setVisibility(View.GONE);
     }
 
     @Override
@@ -168,9 +173,10 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
                 termLabels = new String[cursor.getCount()];
 
                 int idx = 0;
-                List<String> terms = new ArrayList<>();
+                mTerms = new ArrayList<>();
                 for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
                     int id = cursor.getInt(cursor.getColumnIndex(TermEntry.TERM_ID));
+
                     termIds[idx] = id;
                     String start = GeneralUtils.getUtcDate
                             (cursor.getLong(cursor.getColumnIndex(TermEntry.COLUMN_START_DATE)));
@@ -181,10 +187,10 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
                     String date = start + " - " + end;
                     String dateCut = startCut + " - " + endCut;
                     termLabels[idx] = date;
-                    terms.add(dateCut);
+                    mTerms.add(dateCut);
                     idx++;
             }
-                setupSpinner(terms);
+                setupSpinner(mTerms);
                 break;
             case PERIOD_LOADER:
                 mPeriods = new LinkedList<>();
@@ -217,11 +223,53 @@ public class TermActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
-    private void setTermSpinnerVisibility() {
-        if (noTerms) {
-            mTermSpinner.setVisibility(View.GONE);
-        } else {
-            mTermSpinner.setVisibility(View.VISIBLE);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!noTerms) {
+            getMenuInflater().inflate(R.menu.menu_term, menu);
         }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.send_to_admin_menu:
+                ExportUtils.sendAttendanceToAdmin(this, currentTerm);
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
+
+    private void setImageOfWhatToShow(boolean showingAttendance) {
+        if (showingAttendance) {
+            whatToShowButton.setImageResource(R.drawable.ic_spellcheck_black_48dp);
+        } else {
+            whatToShowButton.setImageResource(R.drawable.graduation_cap_48);
+        }
+    }
+
+    private void setupTermsListView(List<String> terms) {
+        final ArrayAdapter<String> termsAdapter = new ArrayAdapter<>(TermActivity.this,
+                android.R.layout.select_dialog_singlechoice, terms);
+
+        AlertDialog.Builder termDialog = new AlertDialog.Builder(TermActivity.this);
+        termDialog
+                .setTitle(R.string.choose_term_dialog_title)
+                .setAdapter(termsAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                currentTerm = termIds[which];
+                currentTermLabel = termLabels[which];
+                termLabelTextView.setText(currentTermLabel);
+
+                getLoaderManager().restartLoader(PERIOD_LOADER, null, loaderCallbacks);
+                if (mAdapter != null) mAdapter.notifyDataSetChanged();
+            }
+        }).create().show();
+
     }
 }

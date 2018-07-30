@@ -78,8 +78,8 @@ public class TermContract {
 
     public static final class AttendanceEntry {
 
-//        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().
-//                appendPath(PATH_ATTENDANCE).build();
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().
+                appendPath(PATH_ATTENDANCE).build();
 
         public static final String TABLE_NAME               = "attendance";
         public static final String COLUMN_ATTENDANCE_ID     = "attendance_id";

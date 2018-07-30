@@ -10,12 +10,14 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,14 @@ import java.util.Scanner;
 
 import com.example.android.umclog.data.TermContract.StudentsEntry;
 import com.example.android.umclog.data.TermContract.StudentToPeriodEntry;
+import com.example.android.umclog.data.TermDbHelper;
+
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+
 /**
  * Used for utility methods for different purposes
  */
@@ -260,5 +270,16 @@ public class GeneralUtils {
             warning = c.getString(R.string.student_not_saved_warning);
         }
         Toast.makeText(c, warning, Toast.LENGTH_SHORT).show();
+    }
+
+    public static String getLabelFromMark(int mark, Resources r) {
+        switch (mark) {
+            case 1: return r.getString(R.string.attendance_present_abbr);
+            case 2: return r.getString(R.string.attendance_absent_abbr);
+            case 3: return r.getString(R.string.attendance_absent_we_abbr);
+            case 4: return r.getString(R.string.attendance_late_abbr);
+            case 5: return r.getString(R.string.attendance_late_we_abbr);
+            default: return r.getString(R.string.attendance_empty_label);
+        }
     }
 }
